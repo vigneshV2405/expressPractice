@@ -1,0 +1,1 @@
+[{"name":"Vignesh","gender":"m","courses":"MERN stack"},{"name":"Adhithya","gender":"m","courses":["MEAN stack","Java Full stack"]}]

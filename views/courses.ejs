@@ -1,0 +1,29 @@
+<html>
+    <head></head>
+    <body>
+        <a href="/">Home</a>&nbsp;&nbsp;
+        <a href="aboutus">About us</a>&nbsp;&nbsp;
+        <a href="contactus">Contact Us</a>&nbsp;&nbsp;
+        <a href="contactlist">Contact list</a>&nbsp;&nbsp;
+        <a href="register">Register</a>&nbsp;&nbsp;
+        <a href="courses">Courses</a><br>
+
+        <ul style="list-style: none; display: flex; flex-wrap: wrap;">
+            <% regs.forEach((r,i)=>{ %>
+                <li style="border: 2px solid; margin: 3px; padding: 5px; " >
+                    <b>Name :</b>
+                    <span><%= r.name %></span><br>
+                    <b>Gender :</b>
+                    <span><%= r.gender.toUpperCase() %></span><br>
+                    <b>Courses interested :</b>
+                    <% if(typeof(r.courses)=="string"){ %>
+                        <span><%= r.courses %></span>
+                    <% } %>
+                    <% if(typeof(r.courses)!='string'){ %>
+                        <span><%= r.courses.join(', ') %></span>
+                    <% } %>
+                </li>
+            <% }) %>
+        </ul>
+    </body>
+</html>

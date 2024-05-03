@@ -1,0 +1,35 @@
+<html>
+    <head></head>
+    <body>
+        <a href="/">Home</a>&nbsp;&nbsp;
+        <a href="aboutus">About us</a>&nbsp;&nbsp;
+        <a href="contactus">Contact Us</a>&nbsp;&nbsp;
+        <a href="contactlist">Contact list</a>&nbsp;&nbsp;
+        <a href="register">Register</a>&nbsp;&nbsp;
+        <a href="courses">Courses</a>
+
+        <h1>Contacts list......</h1>
+        <% contacts.forEach((c,i)=>{ %>
+            <li>
+                <b>Name: </b>
+                <span><%= c.firstname %></span><br>
+                <b>mobile: </b>
+                <span><%= c.number %></span><br>
+                <button onclick="del(<%=i%>)" >delete</button>
+            </li>
+        <%}) %>
+        <script>
+            function del(i){
+                fetch('http://localhost:3000/deletecontact/'+i,{
+                    method : 'DELETE'
+                }).then((res)=>{return res.json()})
+                .then((data)=>{
+                    if(data.status==='success'){
+                        window.location.reload();
+                    }
+                })
+            
+            }
+        </script>
+    </body>
+</html>
