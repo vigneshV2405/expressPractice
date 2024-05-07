@@ -11,10 +11,28 @@
                     <div class="card-body">
                       <h5 class="card-title"><%=product.title%></h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="product/<%=product.id%>" class="btn btn-primary">show more</a>
+                      <a href="product/<%=product.id%>" class="btn btn-success">show more</a>
+                      <button class="btn btn-danger" onclick="handleDelete(<%=product.id%>)">delete</button>
                     </div>
                 </div>
             <%})%>
         </div>
+        <script>
+            function handleDelete(id){
+                fetch(`http://localhost:4500/deleteproduct/${id}`,{
+                    method:"DELETE"
+                }).then((res)=>{
+                    return res.json()
+                })
+                .then((res)=>{
+                    if(res.deleted){
+                        window.location.reload()
+                    }
+                    else{
+                        console.log('error in deleting the product')
+                    }
+                })
+            }
+        </script>
     </body>
 </html>
