@@ -26,7 +26,6 @@ function isLoggedIn(req,res,next){
     else{
         res.redirect('/login')
     }
-    
 }
 
 app.get('/',isLoggedIn,(req,res)=>{
